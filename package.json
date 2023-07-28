@@ -11,16 +11,6 @@
     "prepare": "husky install",
     "prettier": "prettier --write ."
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged --relative"
-    }
-  },
-  "lint-staged": {
-    "*.{html,ts}": [
-      "npm run prettier && npm run lint --fix"
-    ]
-  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.1.0",
