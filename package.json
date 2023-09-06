@@ -7,7 +7,9 @@
     "build": "nx build",
     "watch": "nx build --watch --configuration development",
     "test": "nx test",
-    "lint": "nx lint"
+    "lint": "nx lint",
+    "prepare": "husky install",
+    "prettier": "prettier --write ."
   },
   "private": true,
   "dependencies": {

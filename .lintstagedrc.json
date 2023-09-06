@@ -1,0 +1,5 @@
+{
+  "*.ts": ["prettier --write", "npm run lint --fix"],
+  "*.html": ["eslint", "prettier --write"],
+  "*.scss": "prettier --write"
+}
