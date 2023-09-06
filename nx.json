@@ -1,26 +1,18 @@
 {
+  "affected": {
+    "defaultBase": "master"
+  },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "nx-cloud",
+      "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "test",
-          "lint"
-        ],
-        "accessToken": "MDBiNGZmZTYtNmU4MC00YmFmLTgwMGYtYzNmZTkwNTA4Yjc2fHJlYWQtd3JpdGU="
+        "cacheableOperations": ["build", "test", "lint"]
       }
     }
   },
-  "affected": {
-    "defaultBase": "main"
-  },
   "namedInputs": {
     "sharedGlobals": [],
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
       "!{projectRoot}/tsconfig.spec.json",
@@ -31,26 +23,14 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
     "test": {
-      "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/karma.conf.js"
-      ]
+      "inputs": ["default", "^production", "{workspaceRoot}/karma.conf.js"]
     },
     "lint": {
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json"
-      ]
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
     }
   }
 }
