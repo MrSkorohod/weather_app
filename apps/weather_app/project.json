@@ -1,6 +1,6 @@
 {
-  "$schema": "node_modules/nx/schemas/project-schema.json",
   "name": "weather_app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "generators": {
     "@schematics/angular:component": {
@@ -8,28 +8,26 @@
       "changeDetection": "OnPush"
     }
   },
-  "sourceRoot": "src",
+  "sourceRoot": "apps/weather_app/src",
   "prefix": "app",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "options": {
-        "outputPath": "dist/weather_app",
-        "index": "src/index.html",
-        "main": "src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
-        "tsConfig": "tsconfig.app.json",
+        "outputPath": "dist/apps/weather_app",
+        "index": "apps/weather_app/src/index.html",
+        "main": "apps/weather_app/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/weather_app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "src/favicon.ico",
-          "src/assets"
+          "apps/weather_app/src/favicon.ico",
+          "apps/weather_app/src/assets"
         ],
         "styles": [
           "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
           "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
-          "src/styles.scss"
+          "apps/weather_app/src/styles.scss"
         ],
         "scripts": []
       },
@@ -58,10 +56,7 @@
           "namedChunks": true
         }
       },
-      "defaultConfiguration": "production",
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "defaultConfiguration": "production"
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
@@ -84,34 +79,26 @@
     "test": {
       "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "polyfills": [
-          "zone.js",
-          "zone.js/testing"
-        ],
-        "tsConfig": "tsconfig.spec.json",
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/weather_app/tsconfig.spec.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "src/favicon.ico",
-          "src/assets"
+          "apps/weather_app/src/favicon.ico",
+          "apps/weather_app/src/assets"
         ],
-        "styles": [
-          "src/styles.scss"
-        ],
+        "styles": ["apps/weather_app/src/styles.scss"],
         "scripts": [],
-        "karmaConfig": "karma.conf.js"
+        "karmaConfig": "apps/weather_app/karma.conf.js"
       }
     },
     "lint": {
-      "executor": "@angular-eslint/builder:lint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "src/**/*.ts",
-          "src/**/*.html"
+          "apps/weather_app/**/*.ts",
+          "apps/weather_app/**/*.html"
         ]
-      },
-      "outputs": [
-        "{options.outputFile}"
-      ]
+      }
     }
   }
 }
