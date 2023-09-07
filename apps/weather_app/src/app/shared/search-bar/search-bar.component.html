@@ -1,6 +1,6 @@
 <form [formGroup]="testForm">
   <tui-input formControlName="testValue">
     Choose you city
-    <input tuiTextfield />
+    <input tuiTextfield (input)="inputChange($event)" />
   </tui-input>
 </form>
