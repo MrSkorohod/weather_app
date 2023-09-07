@@ -9,7 +9,10 @@
     "test": "nx test",
     "lint": "nx lint",
     "prepare": "husky install",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "g:component": "nx g @nx/angular:component --project=weather_app --changeDetection=OnPush --style=scss",
+    "g:module": "nx g @nx/angular:module --project=weather_app",
+    "g:routing-module": "nx g @nx/angular:module --routing --project=weather_app"
   },
   "private": true,
   "dependencies": {
@@ -58,7 +61,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "lint-staged": "^13.2.3",
     "nx": "16.5.5",
-    "prettier": "^2.6.2",
+    "prettier": "^2.8.8",
     "typescript": "~5.1.3"
   }
 }
