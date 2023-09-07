@@ -10,9 +10,9 @@
     "lint": "nx lint",
     "prepare": "husky install",
     "prettier": "prettier --write .",
-    "g:component": "nx g @nx/angular:component --project=weather_app --changeDetection=OnPush --style=scss",
-    "g:module": "nx g @nx/angular:module --project=weather_app",
-    "g:routing-module": "nx g @nx/angular:module --routing --project=weather_app"
+    "g:component": "nx g component --project=weather_app --changeDetection=OnPush --style=scss",
+    "g:module": "nx g module --project=weather_app",
+    "g:routing-module": "nx g module --routing --project=weather_app"
   },
   "private": true,
   "dependencies": {

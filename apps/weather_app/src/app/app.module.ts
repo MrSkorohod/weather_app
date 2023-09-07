@@ -6,11 +6,13 @@ import { TuiRootModule } from '@taiga-ui/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     TuiRootModule,

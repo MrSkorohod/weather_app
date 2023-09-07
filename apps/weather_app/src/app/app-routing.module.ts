@@ -9,6 +9,11 @@ const routes: Routes = [
         (m) => m.HomePageModule
       ),
   },
+  {
+    path: '',
+    redirectTo: '/home-page',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
