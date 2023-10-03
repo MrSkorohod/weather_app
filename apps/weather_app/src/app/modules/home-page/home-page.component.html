@@ -1,1 +1,5 @@
+<h1 class="header-title" *ngIf="currentGeoCity$ | async as currentGeoCity">
+  Weather in {{ currentGeoCity }}
+</h1>
+
 <app-search-bar></app-search-bar>
