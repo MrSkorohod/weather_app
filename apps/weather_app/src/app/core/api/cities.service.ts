@@ -14,6 +14,11 @@ export class CitiesService {
   constructor(private apiService: ApiGeneralService) {}
 
   getCityByCoords(lat: number, lng: number): Observable<SimpleCityType[]> {
-    return this.apiService.get<any>(`reversegeocoding?lat=${lat}&lon=${lng}`);
+    return this.apiService.get<any>(`reversegeocoding?lat=${lat}&lon=${lng}`); //TODO change type
+  }
+
+  getCitiesList(cityName: string): Observable<any> {
+    //TODO change type
+    return this.apiService.get<any>(`geocoding?city=${cityName}`);
   }
 }

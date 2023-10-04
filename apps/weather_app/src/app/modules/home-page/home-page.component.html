@@ -2,4 +2,7 @@
   Weather in {{ currentGeoCity }}
 </h1>
 
-<app-search-bar></app-search-bar>
+<app-search-bar
+  [(value)]="searchValue"
+  (valueChange)="searchCityByName($event)"
+></app-search-bar>
