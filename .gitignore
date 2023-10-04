@@ -49,3 +49,5 @@ debug.log
 .vs/slnx.sqlite
 .vs/VSWorkspaceState.json
 .vs/Clientiq_FE/config/applicationhost.config
+
+.env

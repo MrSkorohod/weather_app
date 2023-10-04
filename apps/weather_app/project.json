@@ -12,7 +12,7 @@
   "prefix": "app",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-builders/custom-webpack:browser",
       "options": {
         "outputPath": "dist/apps/weather_app",
         "index": "apps/weather_app/src/index.html",
@@ -29,7 +29,13 @@
           "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
           "apps/weather_app/src/styles.scss"
         ],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/weather_app/custom-webpack.config.js",
+          "mergeRules": {
+            "externals": "replace"
+          }
+        }
       },
       "configurations": {
         "production": {
@@ -45,7 +51,13 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/weather_app/src/environments/environment.ts",
+              "with": "apps/weather_app/src/environments/environment.prod.ts"
+            }
+          ]
         },
         "development": {
           "buildOptimizer": false,
@@ -59,10 +71,16 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@angular-builders/custom-webpack:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "weather_app:build:production"
+          "browserTarget": "weather_app:build:production",
+          "fileReplacements": [
+            {
+              "replace": "apps/weather_app/src/environments/environment.ts",
+              "with": "apps/weather_app/src/environments/environment.prod.ts"
+            }
+          ]
         },
         "development": {
           "browserTarget": "weather_app:build:development"

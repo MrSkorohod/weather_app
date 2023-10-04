@@ -2,18 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { ApiOptions } from '../models/api.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiGeneralService {
-  // apiUrl =  process.env['API_URL'];
-  apiUrl = 'https://api.api-ninjas.com/v1';
+  apiUrl = environment.apiUrl;
 
-  private options: ApiOptions = {
+  private readonly options: ApiOptions = {
     headers: {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      'X-Api-Key': 'VZwYbLdhnw/QoR8PTewjnQ==uJdJ9udX3JyIB1on',
+      'X-Api-Key': environment.apiKey,
     },
   };
 
