@@ -1,6 +1,4 @@
-<form [formGroup]="testForm">
-  <tui-input formControlName="testValue">
-    Choose you city
-    <input tuiTextfield />
-  </tui-input>
-</form>
+<tui-input [(ngModel)]="value" [ngModelOptions]="{ standalone: true }">
+  Choose you city
+  <input (input)="inputChange($event)" tuiTextfield />
+</tui-input>

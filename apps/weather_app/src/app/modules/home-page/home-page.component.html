@@ -1,1 +1,5 @@
-<app-search-bar></app-search-bar>
+<h1 class="header-title">
+  Weather in {{ (currentGeoCity$ | async) || '...' }}
+</h1>
+
+<app-search-bar [(value)]="searchValue"></app-search-bar>
