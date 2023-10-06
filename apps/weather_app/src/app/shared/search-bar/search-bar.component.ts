@@ -3,12 +3,8 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
   Output,
-  SimpleChanges,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-search-bar',

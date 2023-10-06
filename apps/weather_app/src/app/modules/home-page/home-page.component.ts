@@ -1,12 +1,4 @@
-import {
-  Observable,
-  debounceTime,
-  firstValueFrom,
-  map,
-  of,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { Observable, map, switchMap } from 'rxjs';
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { LocationService } from '../../core/services/location.service';
@@ -35,15 +27,5 @@ export class HomePageComponent {
       ),
       map((city) => city[0].name)
     );
-  }
-
-  searchCityByName(searchValue: string): void {
-    this.citiesService
-      .getCitiesList(searchValue)
-      .pipe(
-        debounceTime(1000),
-        tap((data) => console.log(data))
-      )
-      .subscribe();
   }
 }

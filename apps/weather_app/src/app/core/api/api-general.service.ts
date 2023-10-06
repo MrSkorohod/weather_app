@@ -12,7 +12,6 @@ export class ApiGeneralService {
 
   private readonly options: ApiOptions = {
     headers: {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       'X-Api-Key': environment.apiKey,
     },
   };
@@ -23,7 +22,7 @@ export class ApiGeneralService {
     const fullUrl = `${this.apiUrl}/${path}`;
 
     return this.http.get(fullUrl, this.options).pipe(
-      map((response: any) => response as T),
+      map((response: unknown) => response as T),
       catchError((error) => throwError(() => error))
     );
   }

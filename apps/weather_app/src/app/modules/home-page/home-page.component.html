@@ -1,8 +1,5 @@
-<h1 class="header-title" *ngIf="currentGeoCity$ | async as currentGeoCity">
-  Weather in {{ currentGeoCity }}
+<h1 class="header-title">
+  Weather in {{ (currentGeoCity$ | async) || '...' }}
 </h1>
 
-<app-search-bar
-  [(value)]="searchValue"
-  (valueChange)="searchCityByName($event)"
-></app-search-bar>
+<app-search-bar [(value)]="searchValue"></app-search-bar>
