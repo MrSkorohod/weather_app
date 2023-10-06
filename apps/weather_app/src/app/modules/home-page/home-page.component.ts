@@ -25,7 +25,7 @@ export class HomePageComponent {
       switchMap((coords) =>
         this.citiesService.getCityByCoords(coords.lat, coords.lng)
       ),
-      map((city) => city[0].name)
+      map((city) => city[0]?.name || '')
     );
   }
 }
