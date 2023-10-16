@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomePageComponent } from './home-page.component';
 import { CitiesService } from '../../core/api/cities.service';
 import { of } from 'rxjs';
-import { SearchBarComponent } from '../../shared/search-bar/search-bar.component';
+import { SharedModule } from '../../shared/shared.module';
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
@@ -14,7 +14,8 @@ describe('HomePageComponent', () => {
       getCityByCoords: of([]),
     });
     await TestBed.configureTestingModule({
-      declarations: [HomePageComponent, SearchBarComponent],
+      declarations: [HomePageComponent],
+      imports: [SharedModule],
       providers: [
         {
           provide: CitiesService,
