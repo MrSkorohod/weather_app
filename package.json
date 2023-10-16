@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start:weather-app": "nx run  weather_app:serve",
+    "start:weather_app": "nx run  weather_app:serve",
     "build": "nx build",
     "watch": "nx build --watch --configuration development",
-    "test": "nx test",
+    "test:weather_app": "nx run weather_app:test",
     "lint": "nx lint",
     "prepare": "husky install",
     "prettier": "prettier --write .",

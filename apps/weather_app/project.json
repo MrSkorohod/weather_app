@@ -98,7 +98,7 @@
       }
     },
     "test": {
-      "executor": "@angular-devkit/build-angular:karma",
+      "executor": "@angular-builders/custom-webpack:karma",
       "options": {
         "polyfills": ["zone.js", "zone.js/testing"],
         "tsConfig": "apps/weather_app/tsconfig.spec.json",
@@ -107,8 +107,18 @@
           "apps/weather_app/src/favicon.ico",
           "apps/weather_app/src/assets"
         ],
-        "styles": ["apps/weather_app/src/styles.scss"],
+        "styles": [
+          "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+          "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+          "apps/weather_app/src/styles.scss"
+        ],
         "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/weather_app/custom-webpack.config.js",
+          "mergeRules": {
+            "externals": "replace"
+          }
+        },
         "karmaConfig": "apps/weather_app/karma.conf.js"
       }
     },
