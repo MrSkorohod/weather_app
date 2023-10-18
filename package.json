@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "postinstall": "npm run prepare",
     "start:weather_app": "nx run  weather_app:serve",
     "build": "nx build",
     "watch": "nx build --watch --configuration development",

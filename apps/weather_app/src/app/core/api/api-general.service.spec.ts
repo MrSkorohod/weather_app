@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClient } from '@angular/common/http';
 
 import { ApiGeneralService } from './api-general.service';
-import { HttpClient } from '@angular/common/http';
 
 describe('ApiGeneralService', () => {
   let service: ApiGeneralService;
@@ -18,6 +18,7 @@ describe('ApiGeneralService', () => {
         },
       ],
     });
+
     service = TestBed.inject(ApiGeneralService);
   });
 

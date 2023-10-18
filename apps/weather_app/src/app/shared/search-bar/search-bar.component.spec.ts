@@ -12,6 +12,7 @@ describe('SearchBarComponent', () => {
       declarations: [SearchBarComponent],
       imports: [SharedModule],
     });
+
     fixture = TestBed.createComponent(SearchBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
