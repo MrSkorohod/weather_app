@@ -10,6 +10,7 @@ describe('CitiesService', () => {
 
   beforeEach(() => {
     apiGeneralService = jasmine.createSpyObj('apiGeneralService', ['get']);
+
     TestBed.configureTestingModule({
       providers: [
         {
@@ -18,6 +19,7 @@ describe('CitiesService', () => {
         },
       ],
     });
+
     service = TestBed.inject(CitiesService);
   });
 

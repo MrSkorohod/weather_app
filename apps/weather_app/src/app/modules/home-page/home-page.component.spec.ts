@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
+
 import { HomePageComponent } from './home-page.component';
 import { CitiesService } from '../../core/api/cities.service';
-import { of } from 'rxjs';
 import { SharedModule } from '../../shared/shared.module';
 
 describe('HomePageComponent', () => {
@@ -13,6 +14,7 @@ describe('HomePageComponent', () => {
     citiesService = jasmine.createSpyObj('citiesService', {
       getCityByCoords: of([]),
     });
+
     await TestBed.configureTestingModule({
       declarations: [HomePageComponent],
       imports: [SharedModule],
