@@ -1,12 +1,24 @@
 import { TestBed } from '@angular/core/testing';
 
 import { CitiesService } from './cities.service';
+import { ApiGeneralService } from './api-general.service';
 
 describe('CitiesService', () => {
   let service: CitiesService;
+  let apiGeneralService: jasmine.SpyObj<ApiGeneralService>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    apiGeneralService = jasmine.createSpyObj('apiGeneralService', ['get']);
+
+    TestBed.configureTestingModule({
+      providers: [
+        {
+          provide: ApiGeneralService,
+          useValue: apiGeneralService,
+        },
+      ],
+    });
+
     service = TestBed.inject(CitiesService);
   });
 
