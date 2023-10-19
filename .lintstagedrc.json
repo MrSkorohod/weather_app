@@ -1,5 +1,4 @@
 {
-  "apps/weather_app/**/*.{ts,html,scss}": ["npm run test:pre-commit"],
   "*.ts": ["prettier --write", "eslint"],
   "*.html": ["eslint", "prettier --write"],
   "*.scss": "prettier --write"
