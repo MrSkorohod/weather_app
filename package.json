@@ -8,6 +8,7 @@
     "build": "nx build",
     "watch": "nx build --watch --configuration development",
     "test:weather_app": "nx run weather_app:test --watch=false",
+    "test:weather_app:watch": "nx run weather_app:test --watch=true",
     "lint": "nx lint",
     "prepare": "husky install",
     "prettier": "prettier --write .",
