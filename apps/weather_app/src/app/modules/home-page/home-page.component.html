@@ -2,4 +2,8 @@
   Weather in {{ (currentGeoCity$ | async) || '...' }}
 </h1>
 
-<app-search-bar [(value)]="searchValue"></app-search-bar>
+<app-search-bar
+  [value]="searchValue$ | async"
+  (valueChange)="inputEnteredValue($event)"
+  [dataList]="listOfCities$ | async"
+></app-search-bar>

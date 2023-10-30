@@ -1,4 +1,23 @@
-<tui-input [(ngModel)]="value" [ngModelOptions]="{ standalone: true }">
-  Choose you city
-  <input (input)="inputChange($event)" tuiTextfield />
-</tui-input>
+<tui-root>
+  <tui-input
+    [(ngModel)]="value"
+    [ngModelOptions]="{ standalone: true }"
+    tuiTextfieldIconLeft="tuiIconSearchLarge"
+  >
+    Choose you city
+    <input (input)="inputChange($event)" tuiTextfield />
+
+    <ng-container>
+      <tui-data-list *tuiDataList>
+        <button
+          *ngFor="let item of dataList"
+          tuiOption
+          [value]="item"
+          (click)="onSelected(item)"
+        >
+          {{ item }}
+        </button>
+      </tui-data-list>
+    </ng-container>
+  </tui-input>
+</tui-root>
