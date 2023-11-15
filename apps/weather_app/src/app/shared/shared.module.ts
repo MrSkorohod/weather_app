@@ -6,14 +6,16 @@ import { TuiInputModule } from '@taiga-ui/kit';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import {
   TuiDataListModule,
+  TuiFlagPipeModule,
   TuiRootModule,
   TuiSvgModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import { WeatherBlockComponent } from './weather-block/weather-block.component';
 
 @NgModule({
-  declarations: [SearchBarComponent],
-  exports: [SearchBarComponent],
+  declarations: [SearchBarComponent, WeatherBlockComponent],
+  exports: [SearchBarComponent, WeatherBlockComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -24,6 +26,8 @@ import {
     TuiRootModule,
     TuiTextfieldControllerModule,
     TuiSvgModule,
+    TuiDataListModule,
+    TuiFlagPipeModule,
   ],
 })
 export class SharedModule {}

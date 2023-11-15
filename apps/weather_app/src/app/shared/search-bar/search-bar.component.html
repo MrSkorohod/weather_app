@@ -3,19 +3,29 @@
     [(ngModel)]="value"
     [ngModelOptions]="{ standalone: true }"
     tuiTextfieldIconLeft="tuiIconSearchLarge"
+    (input)="inputChange($event)"
   >
     Choose you city
-    <input (input)="inputChange($event)" tuiTextfield />
+    <!-- <input (input)="tuiTextfield /> -->
 
     <ng-container>
       <tui-data-list *tuiDataList>
         <button
           *ngFor="let item of dataList"
+          class="search-data-list-item"
           tuiOption
-          [value]="item"
+          [value]="item.name"
           (click)="onSelected(item)"
         >
-          {{ item }}
+          <p class="search-data-list-item-name">
+            <span>{{ item.name }}</span>
+            <span *ngIf="item.state">{{ item.state }}</span>
+          </p>
+          <img
+            [src]="item.country | tuiFlag"
+            style="width: 37px"
+            alt="Flag image"
+          />
         </button>
       </tui-data-list>
     </ng-container>

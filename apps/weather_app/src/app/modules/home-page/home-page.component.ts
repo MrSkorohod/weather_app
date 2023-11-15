@@ -1,11 +1,20 @@
-import { Observable, Subject, debounceTime, map, of, switchMap } from 'rxjs';
+import {
+  Observable,
+  Subject,
+  debounceTime,
+  delay,
+  map,
+  of,
+  switchMap,
+} from 'rxjs';
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { LocationService } from '../../core/services/location.service';
 import { CitiesService } from '../../core/api/cities.service';
 
-// import { saveEnteredCity } from '../../core/store/actions/city.actions';
-// import { Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
+import { saveEnteredCity } from '../../core/store/actions/city.actions';
+import { GeoCityData } from '../../core/models/cities.mode';
 // import { GeoCityData } from '../../core/models/cities.mode';
 
 @Component({
@@ -18,16 +27,15 @@ export class HomePageComponent {
   currentGeoCity$: Observable<string> = this.getCurrentCity();
 
   public searchValue$: Observable<string>;
-  public listOfCities$!: Observable<string[]>;
+  public listOfCities$!: Observable<GeoCityData[]>;
 
   private searchValueSubject = new Subject<string>();
 
   constructor(
     private locationService: LocationService,
-    private citiesService: CitiesService
-  ) // private store: Store<{ saveCity: string }>
-  {
-    // this.searchValue$ = store.select('saveCity');
+    private citiesService: CitiesService,
+    private store: Store<{ saveCity: string }>
+  ) {
     this.searchValue$ = this.searchValueSubject.asObservable();
   }
 
@@ -38,7 +46,7 @@ export class HomePageComponent {
         return inputValue
           ? this.citiesService
               .getCitiesList(inputValue)
-              .pipe(map((citiesList) => citiesList.map((city) => city.name)))
+              .pipe(map((citiesList) => citiesList))
           : of([]);
       })
     );
@@ -46,7 +54,10 @@ export class HomePageComponent {
 
   inputEnteredValue(value: string): void {
     this.searchValueSubject.next(value);
-    // this.store.dispatch(saveEnteredCity({value: ev}));
+  }
+
+  citySelected(value: GeoCityData): void {
+    this.store.dispatch(saveEnteredCity({ value }));
   }
 
   private getCurrentCity(): Observable<string> {

@@ -5,6 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { GeoCityData } from '../../core/models/cities.mode';
 
 @Component({
   selector: 'app-search-bar',
@@ -14,18 +15,16 @@ import {
 })
 export class SearchBarComponent {
   @Input() value!: string | null;
-  @Input() dataList!: string[] | null;
+  @Input() dataList!: GeoCityData[] | null;
   @Output() valueChange = new EventEmitter<string>();
-  @Output() itemSelected = new EventEmitter<string>();
+  @Output() itemSelected = new EventEmitter<GeoCityData>();
 
   inputChange(searchValue: Event) {
     const inputValue = (searchValue.target as HTMLInputElement).value;
     this.valueChange.emit(inputValue);
-    console.log(this.dataList);
   }
 
-  onSelected(item: string): void {
-    console.log(item);
+  onSelected(item: GeoCityData): void {
     this.itemSelected.emit(item);
   }
 }
