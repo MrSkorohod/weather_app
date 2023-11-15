@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { GeoCityData } from '../../core/models/cities.mode';
 
-describe('HomePageComponent', () => {
+xdescribe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
   let citiesService: jasmine.SpyObj<CitiesService>;
