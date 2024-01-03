@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TuiInputModule } from '@taiga-ui/kit';
+import { TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import {
   TuiDataListModule,
@@ -28,6 +28,7 @@ import { WeatherBlockComponent } from './weather-block/weather-block.component';
     TuiSvgModule,
     TuiDataListModule,
     TuiFlagPipeModule,
+    TuiIslandModule,
   ],
 })
 export class SharedModule {}
