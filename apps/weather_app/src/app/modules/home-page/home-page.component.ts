@@ -2,20 +2,18 @@ import {
   Observable,
   Subject,
   debounceTime,
-  delay,
+  filter,
   map,
   of,
   switchMap,
 } from 'rxjs';
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { LocationService } from '../../core/services/location.service';
 import { CitiesService } from '../../core/api/cities.service';
 
 import { Store } from '@ngrx/store';
 import { saveEnteredCity } from '../../core/store/actions/city.actions';
 import { GeoCityData } from '../../core/models/cities.mode';
-// import { GeoCityData } from '../../core/models/cities.mode';
 
 @Component({
   selector: 'app-home-page',
@@ -24,17 +22,22 @@ import { GeoCityData } from '../../core/models/cities.mode';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePageComponent {
-  currentGeoCity$: Observable<string> = this.getCurrentCity();
+  public currentGeoCity$: Observable<string> = this.store.pipe(
+    map((value) => value.saveCity.name)
+  );
 
   public searchValue$: Observable<string>;
   public listOfCities$!: Observable<GeoCityData[]>;
+  public selectedCityData$: Observable<GeoCityData> = this.store.pipe(
+    filter((value) => !!value.saveCity?.name),
+    map((value) => value.saveCity)
+  );
 
   private searchValueSubject = new Subject<string>();
 
   constructor(
-    private locationService: LocationService,
     private citiesService: CitiesService,
-    private store: Store<{ saveCity: string }>
+    private store: Store<{ saveCity: GeoCityData }>
   ) {
     this.searchValue$ = this.searchValueSubject.asObservable();
   }
@@ -58,14 +61,5 @@ export class HomePageComponent {
 
   citySelected(value: GeoCityData): void {
     this.store.dispatch(saveEnteredCity({ value }));
-  }
-
-  private getCurrentCity(): Observable<string> {
-    return this.locationService.getCurrentLocation().pipe(
-      switchMap((coords) =>
-        this.citiesService.getCityByCoords(coords.lat, coords.lng)
-      ),
-      map((city) => city[0]?.name || '')
-    );
   }
 }

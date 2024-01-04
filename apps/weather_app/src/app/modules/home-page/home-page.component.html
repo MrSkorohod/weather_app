@@ -3,11 +3,14 @@
 </h1>
 
 <app-search-bar
-  style="width: 500px"
+  class="search-bar"
   [value]="searchValue$ | async"
+  [dataList]="listOfCities$ | async"
   (valueChange)="inputEnteredValue($event)"
   (itemSelected)="citySelected($event)"
-  [dataList]="listOfCities$ | async"
 ></app-search-bar>
 
-<app-weather-block></app-weather-block>
+<app-weather-block
+  class="weather-block"
+  [selectedCity]="selectedCityData$ | async"
+></app-weather-block>

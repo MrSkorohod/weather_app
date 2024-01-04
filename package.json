@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "postinstall": "npm run prepare",
-    "start:weather_app": "nx run  weather_app:serve",
+    "start:weather_app": "nx run weather_app:serve",
     "build": "nx build",
     "watch": "nx build --watch --configuration development",
     "test:weather_app": "nx run weather_app:test --watch=false",

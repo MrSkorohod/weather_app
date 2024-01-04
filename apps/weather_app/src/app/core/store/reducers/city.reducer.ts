@@ -1,10 +1,15 @@
 import { createReducer, on } from '@ngrx/store';
-import { saveEnteredCity, reset } from '../actions/city.actions';
+import {
+  saveEnteredCity,
+  reset,
+  loadInitialCitySuccess,
+} from '../actions/city.actions';
 
 export const initialState = {};
 
 export const cityStateReducer = createReducer(
   initialState,
   on(saveEnteredCity, (state, { value }) => value),
-  on(reset, (state) => '')
+  on(reset, () => ({})),
+  on(loadInitialCitySuccess, (state, { value }) => value)
 );

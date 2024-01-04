@@ -26,4 +26,8 @@ export class CitiesService {
   getCityWeather(lat: number, lng: number): Observable<CityWeather> {
     return this.apiService.get<CityWeather>(`weather?lat=${lat}&lon=${lng}`);
   }
+
+  getFullCityInfo(name: string): Observable<GeoCityData[]> {
+    return this.apiService.get<GeoCityData[]>(`city?name=${name}`);
+  }
 }

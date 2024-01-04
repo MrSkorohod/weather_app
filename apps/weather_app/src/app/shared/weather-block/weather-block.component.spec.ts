@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WeatherBlockComponent } from './weather-block.component';
-import { TuiIslandModule } from '@taiga-ui/kit';
+import { SharedModule } from '../shared.module';
 
 describe('WeatherBlockComponent', () => {
   let component: WeatherBlockComponent;
@@ -10,7 +10,7 @@ describe('WeatherBlockComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [WeatherBlockComponent],
-      imports: [TuiIslandModule],
+      imports: [SharedModule],
     });
     fixture = TestBed.createComponent(WeatherBlockComponent);
     component = fixture.componentInstance;

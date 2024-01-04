@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { GeoCityData } from '../../core/models/cities.mode';
 
-xdescribe('HomePageComponent', () => {
+describe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
   let citiesService: jasmine.SpyObj<CitiesService>;
@@ -33,11 +33,13 @@ xdescribe('HomePageComponent', () => {
       ],
     }).compileComponents();
 
-    store = TestBed.get(Store);
-
     fixture = TestBed.createComponent(HomePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    store?.resetSelectors();
   });
 
   it('should create', () => {

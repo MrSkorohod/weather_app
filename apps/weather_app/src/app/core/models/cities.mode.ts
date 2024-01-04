@@ -3,13 +3,13 @@ export type SimpleCityType = {
   name: string;
 };
 
-export type GeoCityData = {
+export interface GeoCityData {
   name: string;
   latitude: number;
   longitude: number;
   country: string;
   state?: string;
-};
+}
 
 export type CityWeather = {
   wind_speed: number;

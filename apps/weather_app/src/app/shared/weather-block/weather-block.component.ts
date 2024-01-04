@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { GeoCityData } from '../../core/models/cities.mode';
 
 @Component({
   selector: 'app-weather-block',
@@ -6,4 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./weather-block.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WeatherBlockComponent {}
+export class WeatherBlockComponent {
+  @Input() selectedCity!: GeoCityData | null;
+}

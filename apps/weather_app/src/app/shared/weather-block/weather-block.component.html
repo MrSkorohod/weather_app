@@ -1,7 +1,11 @@
-<tui-island>
+<tui-island *ngIf="selectedCity" class="tui-island">
   <div class="tui-island__content">
     <figure class="tui-island__figure">
-      <div class="some-figure"></div>
+      <img
+        class="some-figure"
+        [src]="selectedCity.country | tuiFlag"
+        alt="Flag image"
+      />
     </figure>
     <div>
       <p class="tui-island__paragraph">
