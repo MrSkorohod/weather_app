@@ -6,8 +6,6 @@
     (input)="inputChange($event)"
   >
     Choose you city
-    <!-- <input (input)="tuiTextfield /> -->
-
     <ng-container>
       <tui-data-list *tuiDataList class="search-data">
         <button
@@ -22,9 +20,9 @@
             <span *ngIf="item.state">{{ item.state }}</span>
           </p>
           <img
+            class="list-item-image"
             *ngIf="item.country"
             [src]="item.country | tuiFlag"
-            style="width: 37px"
             alt="Flag image"
           />
         </button>

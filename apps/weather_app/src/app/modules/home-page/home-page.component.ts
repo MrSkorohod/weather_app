@@ -8,7 +8,7 @@ import {
   switchMap,
 } from 'rxjs';
 
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CitiesService } from '../../core/api/cities.service';
 
 import { Store } from '@ngrx/store';
@@ -26,24 +26,17 @@ export class HomePageComponent {
     map((value) => value.saveCity.name)
   );
 
-  public searchValue$: Observable<string>;
-  public listOfCities$!: Observable<GeoCityData[]>;
   public selectedCityData$: Observable<GeoCityData> = this.store.pipe(
     filter((value) => !!value.saveCity?.name),
     map((value) => value.saveCity)
   );
 
-  private searchValueSubject = new Subject<string>();
+  private readonly searchValueSubject = new Subject<string>();
+  public readonly searchValue$: Observable<string> =
+    this.searchValueSubject.asObservable();
 
-  constructor(
-    private citiesService: CitiesService,
-    private store: Store<{ saveCity: GeoCityData }>
-  ) {
-    this.searchValue$ = this.searchValueSubject.asObservable();
-  }
-
-  ngOnInit(): void {
-    this.listOfCities$ = this.searchValue$.pipe(
+  public readonly listOfCities$: Observable<GeoCityData[]> =
+    this.searchValue$.pipe(
       debounceTime(500),
       switchMap((inputValue: string) => {
         return inputValue
@@ -53,7 +46,11 @@ export class HomePageComponent {
           : of([]);
       })
     );
-  }
+
+  constructor(
+    private citiesService: CitiesService,
+    private store: Store<{ saveCity: GeoCityData }>
+  ) {}
 
   inputEnteredValue(value: string): void {
     this.searchValueSubject.next(value);
