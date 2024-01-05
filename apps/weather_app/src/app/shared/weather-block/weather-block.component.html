@@ -1,0 +1,20 @@
+<tui-island *ngIf="selectedCity" class="tui-island">
+  <div class="tui-island__content">
+    <figure class="tui-island__figure">
+      <img
+        class="some-figure"
+        [src]="selectedCity.country | tuiFlag"
+        alt="Flag image"
+      />
+    </figure>
+    <div>
+      <p class="tui-island__paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <p class="tui-island__paragraph tui-island__paragraph_link">
+        <a href="/" tuiLink> Fill some papers </a>
+      </p>
+    </div>
+  </div>
+</tui-island>

@@ -22,13 +22,22 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/weather_app/src/favicon.ico",
-          "apps/weather_app/src/assets"
+          "apps/weather_app/src/assets",
+          {
+            "glob": "**/*",
+            "input": "node_modules/@taiga-ui/icons/src",
+            "output": "assets/taiga-ui/icons"
+          }
         ],
         "styles": [
           "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
           "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+          "node_modules/@taiga-ui/styles/taiga-ui-global.less",
           "apps/weather_app/src/styles.scss"
         ],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/weather_app/ui/shared/src"]
+        },
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/weather_app/custom-webpack.config.js",
@@ -112,6 +121,9 @@
           "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
           "apps/weather_app/src/styles.scss"
         ],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/weather_app/ui/shared/src"]
+        },
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/weather_app/custom-webpack.config.js",

@@ -1,12 +1,20 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, Inject, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TuiRootModule } from '@taiga-ui/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
 import { SharedModule } from './shared/shared.module';
+import { GlobalStoreModule } from './core/store/store.module';
+import { loadInitialCity } from './core/store/actions/city.actions';
+import { Store } from '@ngrx/store';
+import { GeoCityData } from '@core/models';
+
+function initializeApp(store: Store<GeoCityData>) {
+  return async () => {
+    store.dispatch(loadInitialCity());
+  };
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,10 +23,16 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    TuiRootModule,
-    StoreModule.forRoot({}, {}),
+    GlobalStoreModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      multi: true,
+      deps: [[new Inject(Store)]],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

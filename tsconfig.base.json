@@ -22,7 +22,9 @@
       "ES2022",
       "dom"
     ],
-    "paths": {},
+    "paths": {
+      "@core/models": ["./apps/weather_app/src/app/core/models/index.ts"]
+    },
     "rootDir": "."
   },
   "angularCompilerOptions": {

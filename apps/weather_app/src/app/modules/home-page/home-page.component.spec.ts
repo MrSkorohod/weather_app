@@ -6,10 +6,16 @@ import { CitiesService } from '../../core/api/cities.service';
 import { SharedModule } from '../../shared/shared.module';
 import { By } from '@angular/platform-browser';
 
+import { Store } from '@ngrx/store';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { GeoCityData } from '@core/models';
+
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
   let citiesService: jasmine.SpyObj<CitiesService>;
+  let store: MockStore<{ value: GeoCityData }>;
+  const initialState = { value: {} };
 
   beforeEach(async () => {
     citiesService = jasmine.createSpyObj('citiesService', {
@@ -24,12 +30,17 @@ describe('HomePageComponent', () => {
           provide: CitiesService,
           useValue: citiesService,
         },
+        provideMockStore({ initialState }),
       ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    store?.resetSelectors();
   });
 
   it('should create', () => {
