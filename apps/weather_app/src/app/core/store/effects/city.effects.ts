@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY, of } from 'rxjs';
 import { map, exhaustMap, catchError, switchMap } from 'rxjs/operators';
 import { LocationService } from '../../services/location.service';
 import { CitiesService } from '../../api/cities.service';
 import { SimpleCityType } from '@core/models';
 
-import { loadInitialCity, savedCity } from '../actions/city.actions';
+import { loadInitialCity, saveCity } from '../actions/city.actions';
 
 @Injectable()
 export class CityEffects {
@@ -31,7 +30,7 @@ export class CityEffects {
               })
             )
           ),
-          map((city) => savedCity({ value: city })),
+          map((city) => saveCity({ value: city })),
           catchError((err) => {
             throw 'Error in getting current location. Details: ' + err;
           })

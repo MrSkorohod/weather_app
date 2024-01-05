@@ -1,10 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 import { GeoCityData } from '@core/models';
 
-export const savedCity = createAction(
-  '[Cities API] Save Current',
+export const saveCity = createAction(
+  '[Cities API] Save City',
   props<{ value: GeoCityData }>()
 );
-export const reset = createAction('[Home Component] Reset');
+export const resetCity = createAction('[City] Reset');
 
-export const loadInitialCity = createAction('[General] Load initial city');
+export const loadInitialCity = createAction('[Cities API] Load initial city');

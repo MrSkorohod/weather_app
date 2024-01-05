@@ -12,7 +12,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CitiesService } from '../../core/api/cities.service';
 
 import { Store } from '@ngrx/store';
-import { savedCity } from '../../core/store/actions/city.actions';
+import { saveCity } from '../../core/store/actions/city.actions';
 import { GeoCityData } from '@core/models';
 
 @Component({
@@ -60,6 +60,6 @@ export class HomePageComponent {
   }
 
   citySelected(value: GeoCityData): void {
-    this.store.dispatch(savedCity({ value }));
+    this.store.dispatch(saveCity({ value }));
   }
 }

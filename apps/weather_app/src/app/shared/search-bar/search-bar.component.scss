@@ -1,4 +1,5 @@
 @import 'styles/colors';
+@import 'styles/typography';
 
 .search-data {
   .list-item {
@@ -16,8 +17,7 @@
         display: block;
 
         &:last-child {
-          font-size: 13px;
-          font-weight: 500;
+          @extend .font-subtitle;
           color: $color-dark-grey;
         }
       }
