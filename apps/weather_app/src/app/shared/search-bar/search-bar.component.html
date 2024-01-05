@@ -9,15 +9,15 @@
     <!-- <input (input)="tuiTextfield /> -->
 
     <ng-container>
-      <tui-data-list *tuiDataList>
+      <tui-data-list *tuiDataList class="search-data">
         <button
           *ngFor="let item of dataList"
-          class="search-data-list-item"
+          class="list-item"
           tuiOption
           [value]="item.name"
           (click)="onSelected(item)"
         >
-          <p class="search-data-list-item-name">
+          <p class="list-item-name">
             <span>{{ item.name }}</span>
             <span *ngIf="item.state">{{ item.state }}</span>
           </p>

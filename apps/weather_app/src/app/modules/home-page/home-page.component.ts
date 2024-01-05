@@ -12,8 +12,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CitiesService } from '../../core/api/cities.service';
 
 import { Store } from '@ngrx/store';
-import { saveEnteredCity } from '../../core/store/actions/city.actions';
-import { GeoCityData } from '../../core/models/cities.mode';
+import { savedCity } from '../../core/store/actions/city.actions';
+import { GeoCityData } from '@core/models';
 
 @Component({
   selector: 'app-home-page',
@@ -60,6 +60,6 @@ export class HomePageComponent {
   }
 
   citySelected(value: GeoCityData): void {
-    this.store.dispatch(saveEnteredCity({ value }));
+    this.store.dispatch(savedCity({ value }));
   }
 }

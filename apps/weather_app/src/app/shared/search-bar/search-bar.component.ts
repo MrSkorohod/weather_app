@@ -5,7 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { GeoCityData } from '../../core/models/cities.mode';
+import { GeoCityData } from '@core/models';
 
 @Component({
   selector: 'app-search-bar',

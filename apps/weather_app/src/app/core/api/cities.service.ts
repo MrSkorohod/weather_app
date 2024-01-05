@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiGeneralService } from './api-general.service';
 import { Observable } from 'rxjs';
-import {
-  CityWeather,
-  GeoCityData,
-  SimpleCityType,
-} from '../models/cities.mode';
+import { CityWeather, GeoCityData, SimpleCityType } from '@core/models';
 
 @Injectable({
   providedIn: 'root',

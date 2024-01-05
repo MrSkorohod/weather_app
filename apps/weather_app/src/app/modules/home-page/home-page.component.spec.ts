@@ -7,7 +7,7 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { GeoCityData } from '../../core/models/cities.mode';
+import { GeoCityData } from '@core/models';
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;

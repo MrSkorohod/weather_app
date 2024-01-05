@@ -6,12 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { GlobalStoreModule } from './core/store/store.module';
-import {
-  loadInitialCity,
-  loadInitialCitySuccess,
-} from './core/store/actions/city.actions';
+import { loadInitialCity } from './core/store/actions/city.actions';
 import { Store } from '@ngrx/store';
-import { GeoCityData } from './core/models/cities.mode';
+import { GeoCityData } from '@core/models';
 
 function initializeApp(store: Store<GeoCityData>) {
   return async () => {

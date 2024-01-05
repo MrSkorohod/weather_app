@@ -1,7 +1,7 @@
-export type SimpleCityType = {
+export interface SimpleCityType {
   country: string;
   name: string;
-};
+}
 
 export interface GeoCityData {
   name: string;
@@ -11,15 +11,15 @@ export interface GeoCityData {
   state?: string;
 }
 
-export type CityWeather = {
-  wind_speed: number;
-  wind_degrees: number;
+export interface CityWeather {
+  windSpeed: number;
+  windDegrees: number;
   temp: number;
   humidity: number;
   sunset: number;
-  min_temp: number;
-  cloud_pct: number;
-  feels_like: number;
+  minTemp: number;
+  cloudPct: number;
+  feelsLike: number;
   sunrise: number;
-  max_temp: number;
-};
+  maxTemp: number;
+}
