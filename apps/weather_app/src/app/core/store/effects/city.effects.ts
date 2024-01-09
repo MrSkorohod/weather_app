@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, exhaustMap, catchError, switchMap } from 'rxjs/operators';
 import { LocationService } from '../../services/location.service';
-import { CitiesService } from '../../api/cities.service';
+import { CitiesApiService } from '../../api/cities-api.service';
 import { SimpleCityType } from '@core/models';
 
 import { loadInitialCity, saveCity } from '../actions/city.actions';
@@ -15,7 +15,7 @@ export class CityEffects {
       exhaustMap(() =>
         this.locationService.getCurrentLocation().pipe(
           switchMap((coords) =>
-            this.citiesService.getCityByCoords(coords.lat, coords.lng).pipe(
+            this.citiesApiService.getCityByCoords(coords.lat, coords.lng).pipe(
               map((value) => value[0]),
               catchError((err) => {
                 throw 'Error in getting city by coordinate. Details: ' + err;
@@ -23,7 +23,7 @@ export class CityEffects {
             )
           ),
           switchMap((city: SimpleCityType) =>
-            this.citiesService.getFullCityInfo(city?.name).pipe(
+            this.citiesApiService.getFullCityInfo(city?.name).pipe(
               map((info) => info[0]),
               catchError((err) => {
                 throw 'Error in getting full city information. Details: ' + err;
@@ -42,6 +42,6 @@ export class CityEffects {
   constructor(
     private actions$: Actions,
     private locationService: LocationService,
-    private citiesService: CitiesService
+    private citiesApiService: CitiesApiService
   ) {}
 }

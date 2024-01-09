@@ -9,6 +9,7 @@ import { environment } from '../../../environments/environment';
 })
 export class ApiGeneralService {
   apiUrl = environment.apiUrl;
+  secondApiUrl = environment.secondApiUrl;
 
   private readonly options: ApiOptions = {
     headers: {
@@ -16,12 +17,23 @@ export class ApiGeneralService {
     },
   };
 
+  private readonly optionsForSecondApi: ApiOptions = {
+    headers: {
+      'X-Api-Key': environment.secondApiKey,
+    },
+  };
+
   constructor(private http: HttpClient) {}
 
-  get<T>(path: string): Observable<T> {
-    const fullUrl = `${this.apiUrl}/${path}`;
+  get<T>(path: string): Observable<T>;
+  get<T>(path: string, useOtherApi: boolean): Observable<T>;
+  get<T>(path?: string, useOtherApi?: boolean): Observable<T> {
+    const fullUrl = useOtherApi
+      ? `${this.apiUrl}/${path}`
+      : `${this.secondApiUrl}/${path}`;
+    const options = useOtherApi ? this.options : this.optionsForSecondApi;
 
-    return this.http.get(fullUrl, this.options).pipe(
+    return this.http.get(fullUrl, options).pipe(
       map((response: unknown) => response as T),
       catchError((error) => throwError(() => error))
     );

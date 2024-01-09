@@ -1,20 +1,36 @@
-<tui-island *ngIf="selectedCity" class="tui-island">
-  <div class="tui-island__content">
-    <figure class="tui-island__figure">
-      <img
-        class="some-figure"
-        [src]="selectedCity.country | tuiFlag"
-        alt="Flag image"
-      />
-    </figure>
-    <div>
-      <p class="tui-island__paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-      <p class="tui-island__paragraph tui-island__paragraph_link">
-        <a href="/" tuiLink> Fill some papers </a>
-      </p>
+<tui-loader
+  [showLoader]="!cityWeather"
+  [overlay]="true"
+  [size]="'xl'"
+  style="z-index: -1"
+>
+  <tui-island *ngIf="selectedCity && cityWeather" class="tui-island">
+    <div class="tui-island__content">
+      <figure class="tui-island__figure">
+        <img
+          class="some-figure"
+          src="/assets/images/rain.png"
+          alt="Forecast image"
+        />
+      </figure>
+      <div>
+        <h1 class="tui-island__title">
+          Real Temperature: {{ cityWeather.temp }}
+        </h1>
+        <p class="tui-island__paragraph">
+          Feels Like: {{ cityWeather.feelsLike }}
+        </p>
+        <p class="tui-island__paragraph">
+          Sunrize: {{ cityWeather.sunrise | dayTime }}
+        </p>
+        <p class="tui-island__paragraph">
+          Sunset: {{ cityWeather.sunset | dayTime }}
+        </p>
+        <pre>{{ cityWeather | json }}</pre>
+        <p class="tui-island__paragraph tui-island__paragraph_link">
+          <a href="/" tuiLink> Fill some papers </a>
+        </p>
+      </div>
     </div>
-  </div>
-</tui-island>
+  </tui-island>
+</tui-loader>

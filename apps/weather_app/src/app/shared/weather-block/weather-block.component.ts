@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { GeoCityData } from '@core/models';
+import { CityWeather, GeoCityData } from '@core/models';
 
 @Component({
   selector: 'app-weather-block',
@@ -9,4 +9,5 @@ import { GeoCityData } from '@core/models';
 })
 export class WeatherBlockComponent {
   @Input() selectedCity!: GeoCityData | null;
+  @Input() cityWeather!: CityWeather | null;
 }

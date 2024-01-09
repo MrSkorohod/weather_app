@@ -4,16 +4,17 @@ import {
   debounceTime,
   filter,
   map,
+  merge,
   of,
   switchMap,
 } from 'rxjs';
 
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { CitiesService } from '../../core/api/cities.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { saveCity } from '../../core/store/actions/city.actions';
-import { GeoCityData } from '@core/models';
+import { CityWeather, GeoCityData } from '@core/models';
+import { CitiesService } from '@core/services';
 
 @Component({
   selector: 'app-home-page',
@@ -47,9 +48,26 @@ export class HomePageComponent {
       })
     );
 
+  private readonly cityChanged$ = new Subject<void>();
+  public readonly cityWeather$: Observable<CityWeather | null> = merge(
+    this.cityChanged$.asObservable().pipe(map(() => null)),
+    this.store.pipe(
+      filter((value) => !!value.saveCity?.name),
+      map((value) => {
+        return {
+          lat: value.saveCity.latitude,
+          lng: value.saveCity.longitude,
+        };
+      }),
+      switchMap((coords) =>
+        this.citiesService.getCityWeather(coords.lat, coords.lng)
+      )
+    )
+  );
+
   constructor(
-    private citiesService: CitiesService,
-    private store: Store<{ saveCity: GeoCityData }>
+    private store: Store<{ saveCity: GeoCityData }>,
+    private citiesService: CitiesService
   ) {}
 
   inputEnteredValue(value: string): void {
@@ -57,6 +75,7 @@ export class HomePageComponent {
   }
 
   citySelected(value: GeoCityData): void {
+    this.cityChanged$.next();
     this.store.dispatch(saveCity({ value }));
   }
 }

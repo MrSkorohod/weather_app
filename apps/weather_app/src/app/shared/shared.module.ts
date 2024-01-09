@@ -7,14 +7,16 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import {
   TuiDataListModule,
   TuiFlagPipeModule,
+  TuiLoaderModule,
   TuiRootModule,
   TuiSvgModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import { WeatherBlockComponent } from './weather-block/weather-block.component';
+import { DayTimePipe } from '../core/pipes/day-time.pipe';
 
 @NgModule({
-  declarations: [SearchBarComponent, WeatherBlockComponent],
+  declarations: [SearchBarComponent, WeatherBlockComponent, DayTimePipe],
   exports: [SearchBarComponent, WeatherBlockComponent],
   imports: [
     CommonModule,
@@ -29,6 +31,7 @@ import { WeatherBlockComponent } from './weather-block/weather-block.component';
     TuiDataListModule,
     TuiFlagPipeModule,
     TuiIslandModule,
+    TuiLoaderModule,
   ],
 })
 export class SharedModule {}

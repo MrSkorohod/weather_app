@@ -23,7 +23,10 @@
       "dom"
     ],
     "paths": {
-      "@core/models": ["./apps/weather_app/src/app/core/models/index.ts"]
+      "@core/models": ["./apps/weather_app/src/app/core/models/index.ts"],
+      "@core/api-models": ["./apps/weather_app/src/app/core/api/api-models/index.ts"],
+      "@core/api-services": ["./apps/weather_app/src/app/core/api/index.ts"],
+      "@core/services": ["./apps/weather_app/src/app/core/services/index.ts"],
     },
     "rootDir": "."
   },

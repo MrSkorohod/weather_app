@@ -27,6 +27,11 @@
             "glob": "**/*",
             "input": "node_modules/@taiga-ui/icons/src",
             "output": "assets/taiga-ui/icons"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/weather_app/ui/shared/src/assets/images",
+            "output": "assets/images"
           }
         ],
         "styles": [
