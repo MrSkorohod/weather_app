@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CityWeather, GeoCityData } from '@core/models';
+import { FullWeatherData, GeoCityData } from '@core/models';
 
 @Component({
   selector: 'app-weather-block',
@@ -9,5 +9,9 @@ import { CityWeather, GeoCityData } from '@core/models';
 })
 export class WeatherBlockComponent {
   @Input() selectedCity!: GeoCityData | null;
-  @Input() cityWeather!: CityWeather | null;
+  @Input() cityWeather!: FullWeatherData | null;
+
+  getWeatherPic(): string {
+    return `https://openweathermap.org/img/wn/${this.cityWeather?.weather[0].icon}@2x.png`;
+  }
 }

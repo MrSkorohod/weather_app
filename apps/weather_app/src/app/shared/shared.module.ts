@@ -14,9 +14,15 @@ import {
 } from '@taiga-ui/core';
 import { WeatherBlockComponent } from './weather-block/weather-block.component';
 import { DayTimePipe } from '../core/pipes/day-time.pipe';
+import { WeatherInfoTableComponent } from './weather-info-table/weather-info-table.component';
 
 @NgModule({
-  declarations: [SearchBarComponent, WeatherBlockComponent, DayTimePipe],
+  declarations: [
+    SearchBarComponent,
+    WeatherBlockComponent,
+    DayTimePipe,
+    WeatherInfoTableComponent,
+  ],
   exports: [SearchBarComponent, WeatherBlockComponent],
   imports: [
     CommonModule,

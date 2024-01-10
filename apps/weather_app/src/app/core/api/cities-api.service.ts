@@ -3,6 +3,7 @@ import { ApiGeneralService } from './api-general.service';
 import { Observable } from 'rxjs';
 import {
   CityWeatherApi,
+  FullWeatherDataApi,
   GeoCityDataApi,
   SimpleCityTypeApi,
 } from '@core/api-models';
@@ -25,6 +26,13 @@ export class CitiesApiService {
 
   getCityWeather(lat: number, lng: number): Observable<CityWeatherApi> {
     return this.apiService.get<CityWeatherApi>(`weather?lat=${lat}&lon=${lng}`);
+  }
+
+  getFullWeatherInfo(lat: number, lng: number): Observable<FullWeatherDataApi> {
+    return this.apiService.get<FullWeatherDataApi>(
+      `weather?lat=${lat}&lon=${lng}&units=metric`,
+      true
+    );
   }
 
   getFullCityInfo(name: string): Observable<GeoCityDataApi[]> {

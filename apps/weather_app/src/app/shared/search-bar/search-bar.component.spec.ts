@@ -49,11 +49,11 @@ describe('SearchBarComponent', () => {
 
     expect(fixture.componentInstance.value).toBe('Test value');
   });
-  //TODO Check what wrong
-  xit('should emit value', () => {
+
+  it('should emit value', () => {
     spyOn(component.valueChange, 'emit');
 
-    const input = fixture.debugElement.query(By.css('input'));
+    const input = fixture.debugElement.query(By.css('tui-input'));
 
     input.triggerEventHandler('input', {
       target: { value: 'Input Test Value' },

@@ -29,9 +29,10 @@ export class ApiGeneralService {
   get<T>(path: string, useOtherApi: boolean): Observable<T>;
   get<T>(path?: string, useOtherApi?: boolean): Observable<T> {
     const fullUrl = useOtherApi
-      ? `${this.apiUrl}/${path}`
-      : `${this.secondApiUrl}/${path}`;
-    const options = useOtherApi ? this.options : this.optionsForSecondApi;
+      ? `${this.secondApiUrl}/${path}&appid=${environment.secondApiKey}`
+      : `${this.apiUrl}/${path}`;
+
+    const options = useOtherApi ? {} : this.options;
 
     return this.http.get(fullUrl, options).pipe(
       map((response: unknown) => response as T),

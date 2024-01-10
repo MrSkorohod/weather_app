@@ -13,7 +13,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { saveCity } from '../../core/store/actions/city.actions';
-import { CityWeather, GeoCityData } from '@core/models';
+import { FullWeatherData, GeoCityData } from '@core/models';
 import { CitiesService } from '@core/services';
 
 @Component({
@@ -49,7 +49,7 @@ export class HomePageComponent {
     );
 
   private readonly cityChanged$ = new Subject<void>();
-  public readonly cityWeather$: Observable<CityWeather | null> = merge(
+  public readonly cityWeather$: Observable<FullWeatherData | null> = merge(
     this.cityChanged$.asObservable().pipe(map(() => null)),
     this.store.pipe(
       filter((value) => !!value.saveCity?.name),
@@ -60,7 +60,7 @@ export class HomePageComponent {
         };
       }),
       switchMap((coords) =>
-        this.citiesService.getCityWeather(coords.lat, coords.lng)
+        this.citiesService.getFullWeatherInfo(coords.lat, coords.lng)
       )
     )
   );

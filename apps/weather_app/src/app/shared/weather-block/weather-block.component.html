@@ -7,29 +7,24 @@
   <tui-island *ngIf="selectedCity && cityWeather" class="tui-island">
     <div class="tui-island__content">
       <figure class="tui-island__figure">
-        <img
-          class="some-figure"
-          src="/assets/images/rain.png"
-          alt="Forecast image"
-        />
+        <img class="some-figure" [src]="getWeatherPic()" alt="Forecast image" />
       </figure>
       <div>
         <h1 class="tui-island__title">
-          Real Temperature: {{ cityWeather.temp }}
+          Real Temperature: {{ cityWeather.main.temp | number : '1.0-0' }}
         </h1>
         <p class="tui-island__paragraph">
-          Feels Like: {{ cityWeather.feelsLike }}
+          Feels Like: {{ cityWeather.main.feelsLike | number : '1.0-0' }}
         </p>
         <p class="tui-island__paragraph">
-          Sunrize: {{ cityWeather.sunrise | dayTime }}
+          Sunrize: {{ cityWeather.sys.sunrise | dayTime }}
         </p>
         <p class="tui-island__paragraph">
-          Sunset: {{ cityWeather.sunset | dayTime }}
+          Sunset: {{ cityWeather.sys.sunset | dayTime }}
         </p>
-        <pre>{{ cityWeather | json }}</pre>
-        <p class="tui-island__paragraph tui-island__paragraph_link">
-          <a href="/" tuiLink> Fill some papers </a>
-        </p>
+        <!-- <pre>{{ cityWeather | json }}</pre> -->
+
+        <app-weather-info-table></app-weather-info-table>
       </div>
     </div>
   </tui-island>
