@@ -1,9 +1,68 @@
+@import 'styles/colors';
+
 .tui-island {
-  // z-index: -1;
+  display: grid;
+  grid-template-rows: repeat(5, auto);
+  grid-template-columns: repeat(6, auto);
+  grid-template-areas:
+    'weather_current weather_current weather_current weather_current weather_current weather_current '
+    'feelsLike feelsLike wind wind sunrise sunrise'
+    'feelsLike feelsLike wind wind sunrise sunrise'
+    'humidity humidity pressure pressure sunset sunset'
+    'humidity humidity pressure pressure sunset sunset';
+  gap: 6px;
+
+  &__title {
+    padding: 12px 0 0;
+    font-size: 48px;
+  }
 }
 
+.weather_current {
+  grid-area: weather_current;
+  justify-self: center;
+
+  &_general {
+    display: inline-block;
+    max-width: fit-content;
+  }
+}
+
+.feelsLike,
+.wind,
+.sunrise,
+.humidity,
+.pressure,
+.sunset {
+  border: 1px solid $color-border;
+  border-radius: 16px;
+  padding: 20px 0 10px;
+  text-align: center;
+}
+
+.feelsLike {
+  grid-area: feelsLike;
+}
+.wind {
+  grid-area: wind;
+}
+.sunrise {
+  grid-area: sunrise;
+}
+.humidity {
+  grid-area: humidity;
+}
+.pressure {
+  grid-area: pressure;
+}
+.sunset {
+  grid-area: sunset;
+}
+
+.measure {
+  font-size: 28px;
+  padding-bottom: 14px;
+}
 .some-figure {
-  border-radius: 100%;
-  width: 100px;
-  height: 100px;
+  float: left;
 }
