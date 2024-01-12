@@ -1,20 +1,47 @@
-<tui-island *ngIf="selectedCity" class="tui-island">
-  <div class="tui-island__content">
-    <figure class="tui-island__figure">
-      <img
-        class="some-figure"
-        [src]="selectedCity.country | tuiFlag"
-        alt="Flag image"
-      />
-    </figure>
-    <div>
-      <p class="tui-island__paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-      <p class="tui-island__paragraph tui-island__paragraph_link">
-        <a href="/" tuiLink> Fill some papers </a>
-      </p>
+<tui-loader
+  [showLoader]="!cityWeather"
+  [overlay]="true"
+  [size]="'xl'"
+  style="z-index: -1"
+>
+  <tui-island *ngIf="selectedCity && cityWeather" class="tui-island">
+    <div class="weather_current">
+      <div class="weather_current_general">
+        <h1 class="tui-island__title">
+          {{ cityWeather.main.temp | number : '1.0-0' }}&#8451;
+        </h1>
+        <p class="tui-island__paragraph">
+          {{ cityWeather.dt | date : 'EEEE, MMMM d' : 'UTC' }}
+        </p>
+      </div>
+
+      <img class="some-figure" [src]="getWeatherPic()" alt="Forecast image" />
     </div>
-  </div>
-</tui-island>
+    <div class="feelsLike">
+      <div class="measure">
+        {{ cityWeather.main.feelsLike | number : '1.0-0' }}&#8451;
+      </div>
+      <div class="subtitle tui-island__paragraph">Feels Like</div>
+    </div>
+    <div class="wind">
+      <div class="measure">{{ cityWeather.wind.speed }} meter/sec</div>
+      <div class="subtitle tui-island__paragraph">Wind</div>
+    </div>
+    <div class="sunrise">
+      <div class="measure">{{ cityWeather.sys.sunrise | dayTime }}</div>
+      <div class="subtitle tui-island__paragraph">Sunrise</div>
+    </div>
+    <div class="humidity">
+      <div class="measure">{{ cityWeather.main.humidity }} %</div>
+      <div class="subtitle tui-island__paragraph">Humidity</div>
+    </div>
+    <div class="pressure">
+      <div class="measure">{{ cityWeather.main.pressure }} hPa</div>
+      <div class="subtitle tui-island__paragraph">Atmospheric pressure</div>
+    </div>
+    <div class="sunset">
+      <div class="measure">{{ cityWeather.sys.sunset | dayTime }}</div>
+      <div class="subtitle tui-island__paragraph">Sunset</div>
+    </div>
+  </tui-island>
+</tui-loader>

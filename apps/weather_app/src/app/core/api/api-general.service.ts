@@ -8,20 +8,13 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class ApiGeneralService {
-  apiUrl = environment.apiUrl;
-
-  private readonly options: ApiOptions = {
-    headers: {
-      'X-Api-Key': environment.apiKey,
-    },
-  };
+  readonly ninjasApi = environment.ninjasApiUrl;
+  readonly openWeatherApi = environment.openWeatherApiUrl;
 
   constructor(private http: HttpClient) {}
 
   get<T>(path: string): Observable<T> {
-    const fullUrl = `${this.apiUrl}/${path}`;
-
-    return this.http.get(fullUrl, this.options).pipe(
+    return this.http.get(path).pipe(
       map((response: unknown) => response as T),
       catchError((error) => throwError(() => error))
     );

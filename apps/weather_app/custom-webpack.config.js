@@ -10,7 +10,7 @@ module.exports = (config, options, context) => {
     }, {}),
   }));
   config.plugins.push(new webpack.EnvironmentPlugin([
-    'API_URL', 'API_KEY'
+    'NINJAS_API_URL', 'NINJAS_API_KEY', 'OPENWEATHER_API_URL', 'OPENWEATHER_API_KEY'
   ]));
   return config;
 };

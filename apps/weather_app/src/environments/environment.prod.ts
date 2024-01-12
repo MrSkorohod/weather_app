@@ -1,5 +1,7 @@
 export const environment = {
   prod: true,
-  apiUrl: process.env['API_URL'],
-  apiKey: process.env['API_KEY'],
+  ninjasApiUrl: process.env['NINJAS_API_URL'] as string,
+  ninjasApiKey: process.env['NINJAS_API_KEY'] as string,
+  openWeatherApiUrl: process.env['OPENWEATHER_API_URL'] as string,
+  openWeatherApiKey: process.env['OPENWEATHER_API_KEY'] as string,
 };

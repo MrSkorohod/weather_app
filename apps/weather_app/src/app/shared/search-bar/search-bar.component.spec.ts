@@ -53,7 +53,7 @@ describe('SearchBarComponent', () => {
   it('should emit value', () => {
     spyOn(component.valueChange, 'emit');
 
-    const input = fixture.debugElement.query(By.css('input'));
+    const input = fixture.debugElement.query(By.css('tui-input'));
 
     input.triggerEventHandler('input', {
       target: { value: 'Input Test Value' },

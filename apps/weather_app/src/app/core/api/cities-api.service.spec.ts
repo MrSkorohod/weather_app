@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CitiesService } from './cities.service';
+import { CitiesApiService } from './cities-api.service';
 import { ApiGeneralService } from './api-general.service';
 import { of } from 'rxjs';
 
-describe('CitiesService', () => {
-  let service: CitiesService;
+describe('CitiesApiService', () => {
+  let service: CitiesApiService;
   let apiGeneralService: jasmine.SpyObj<ApiGeneralService>;
 
   beforeEach(() => {
@@ -20,7 +20,7 @@ describe('CitiesService', () => {
       ],
     });
 
-    service = TestBed.inject(CitiesService);
+    service = TestBed.inject(CitiesApiService);
   });
 
   it('should be created', () => {
