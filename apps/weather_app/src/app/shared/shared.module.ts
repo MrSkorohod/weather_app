@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
@@ -14,6 +14,7 @@ import {
 } from '@taiga-ui/core';
 import { WeatherBlockComponent } from './weather-block/weather-block.component';
 import { DayTimePipe } from '../core/pipes/day-time.pipe';
+import { ApiInterceptor } from '../core/interceptors/api.interceptor';
 
 @NgModule({
   declarations: [SearchBarComponent, WeatherBlockComponent, DayTimePipe],
@@ -32,6 +33,13 @@ import { DayTimePipe } from '../core/pipes/day-time.pipe';
     TuiFlagPipeModule,
     TuiIslandModule,
     TuiLoaderModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true,
+    },
   ],
 })
 export class SharedModule {}

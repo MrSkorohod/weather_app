@@ -16,26 +16,31 @@ export class CitiesApiService {
 
   getCityByCoords(lat: number, lng: number): Observable<SimpleCityTypeApi[]> {
     return this.apiService.get<SimpleCityTypeApi[]>(
-      `reversegeocoding?lat=${lat}&lon=${lng}`
+      `${this.apiService.ninjasApi}/reversegeocoding?lat=${lat}&lon=${lng}`
     );
   }
 
   getCitiesList(cityName: string): Observable<GeoCityDataApi[]> {
-    return this.apiService.get<GeoCityDataApi[]>(`geocoding?city=${cityName}`);
+    return this.apiService.get<GeoCityDataApi[]>(
+      `${this.apiService.ninjasApi}/geocoding?city=${cityName}`
+    );
   }
 
   getCityWeather(lat: number, lng: number): Observable<CityWeatherApi> {
-    return this.apiService.get<CityWeatherApi>(`weather?lat=${lat}&lon=${lng}`);
+    return this.apiService.get<CityWeatherApi>(
+      `${this.apiService.ninjasApi}/weather?lat=${lat}&lon=${lng}`
+    );
   }
 
   getFullWeatherInfo(lat: number, lng: number): Observable<FullWeatherDataApi> {
     return this.apiService.get<FullWeatherDataApi>(
-      `weather?lat=${lat}&lon=${lng}&units=metric`,
-      true
+      `${this.apiService.openWeatherApi}/weather?lat=${lat}&lon=${lng}&units=metric`
     );
   }
 
   getFullCityInfo(name: string): Observable<GeoCityDataApi[]> {
-    return this.apiService.get<GeoCityDataApi[]>(`city?name=${name}`);
+    return this.apiService.get<GeoCityDataApi[]>(
+      `${this.apiService.ninjasApi}/city?name=${name}`
+    );
   }
 }
