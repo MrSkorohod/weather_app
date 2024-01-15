@@ -8,6 +8,7 @@ Also you have possibility for choose another city for checking weather.
 ## Development server
 Before you start, please install all dependencies `npm i`
 After that use `npm run start:weather_app` for a dev server. Navigate to `http://localhost:4201/`. The application will automatically reload if you change any of the source files.
+If you try to launch the project, please contact to me. I will give you the env configuration to use the API in this application.
 
 ## Code scaffolding
 
